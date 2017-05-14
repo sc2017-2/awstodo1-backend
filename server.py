@@ -31,6 +31,13 @@ def concluir_tarefa(id):
 		tarefa["concluida"] = True
 	return ''
 
-		
+
+@app.route("/tarefas/<id>", methods=["DELETE"])
+def excluir_tarefa(id):
+	global tarefas
+	tarefas = list(filter(lambda x: x["id"] != int(id), tarefas))
+	return ''
+
+
 if __name__ == "__main__":
 	app.run(host="0.0.0.0")
